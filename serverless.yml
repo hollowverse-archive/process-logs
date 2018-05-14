@@ -23,10 +23,3 @@ functions:
   processLogs:
     handler: src/processLogs.processLogs
 
-package:
-  include:
-    - src/**
-    - secrets/**
-  exclude:
-    - .webpack
-

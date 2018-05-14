@@ -1,3 +1,3 @@
-export const processLogs = () => {
-
-}
+export const processLogs: AWSLambda.CloudWatchLogsHandler = async () => {
+  return 'ok';
+};

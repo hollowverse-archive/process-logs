@@ -1,0 +1,32 @@
+service: process-logs
+
+plugins:
+  - serverless-webpack
+
+custom:
+  webpack:
+    webpackConfig: webpack.config.ts
+    packager: yarn
+    includeModules: true # Enable auto-packing of external modules
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage, 'local'}
+  memorySize: 128
+  timeout: 300
+  environment:
+    NODE_ENV: ${env:NODE_ENV, 'development'}
+    STAGE: ${self:provider.stage}
+
+functions:
+  processLogs:
+    handler: src/processLogs.processLogs
+
+package:
+  include:
+    - src/**
+    - secrets/**
+  exclude:
+    - .webpack
+

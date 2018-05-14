@@ -1,0 +1,92 @@
+{
+  "name": "process-aws-logs",
+  "version": "1.0.0",
+  "description": "An AWS Lambda that sends logs from AWS CloudWatch to Splunk for processing",
+  "main": "index.js",
+  "author": "Muhammad Fawwaz Orabi <mfawwaz93@gmail.com>",
+  "license": "Unlicense",
+  "private": true,
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.46",
+    "@babel/core": "^7.0.0-beta.46",
+    "@babel/node": "^7.0.0-beta.46",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.46",
+    "@babel/preset-env": "^7.0.0-beta.46",
+    "@babel/preset-stage-3": "^7.0.0-beta.46",
+    "@hollowverse/clown": "^3.2.0",
+    "@hollowverse/config": "^35.0.1",
+    "@hollowverse/validate-filenames": "^3.0.2",
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-typescript": "^0.11.0",
+    "husky": "^1.0.0-rc.1",
+    "lint-staged": "^7.0.5",
+    "npm-run-all": "^4.1.2",
+    "prettier": "^1.12.0",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.8.0",
+    "tslint-eslint-rules": "^5.0.0",
+    "tslint-language-service": "^0.9.9",
+    "tslint-microsoft-contrib": "^5.0.3",
+    "tslint-react": "^3.5.1",
+    "typescript": "^2.8.1",
+    "typescript-eslint-parser": "^15.0.0",
+    "yarnhook": "^0.2.0"
+  },
+  "scripts": {
+    "pre-push": "# OVERRIDE",
+    "pre-commit": "yarn common-check",
+    "lint-staged": "lint-staged",
+    "common-check": "run-p -c --aggregate-output validate-filenames 'clown check' check-integrity",
+    "check-integrity": "yarn check --integrity",
+    "validate-filenames": "validate-filenames",
+    "check-ts": "tsc --project . --noEmit",
+    "lint-ts": "tslint 'src/**/*.ts' --project ."
+  },
+  "lint-staged": {
+    "**/*.md": [
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.{j,t}s{x,}": [
+      "prettier --write",
+      "git add"
+    ],
+    "**/!(package).json": [
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.js{x,}": [
+      "eslint"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "run-p -c --aggregate-output lint-staged pre-commit",
+      "pre-push": "yarn pre-push",
+      "post-merge": "yarnhook",
+      "post-checkout": "yarnhook",
+      "post-rewrite": "yarnhook"
+    }
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "useBabelrc": true
+      }
+    }
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0-beta.46",
+    "@babel/runtime": "^7.0.0-beta.46",
+    "@hollowverse/utils": "^6.0.0"
+  },
+  "resolutions": {
+    "babel-core": "^7.0.0-bridge.0"
+  }
+}

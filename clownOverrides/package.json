@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@hollowverse/utils": "^7.0.1"
+  }
+}

@@ -1,10 +1,12 @@
 {
   "cSpell.words": [
+    "Splunk",
+    "awslogs",
     "hollowverse",
     "loglevel",
     "promisify",
-    "webpagetest",
-    "unhandledrejection"
+    "unhandledrejection",
+    "webpagetest"
   ],
   "editor.tabSize": 2,
   "editor.formatOnSave": true,

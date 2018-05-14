@@ -36,4 +36,6 @@ provider:
 functions:
   processLogs:
     handler: src/processLogs.processLogs
+    events:
+      - cloudwatchLog: '/aws/lambda/website-master-servePages'
 

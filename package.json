@@ -16,6 +16,9 @@
     "@hollowverse/clown": "^3.2.0",
     "@hollowverse/config": "^35.0.1",
     "@hollowverse/validate-filenames": "^3.0.2",
+    "@types/aws-lambda": "^8.10.3",
+    "@types/bluebird": "^3.5.20",
+    "@types/got": "^8.3.1",
     "@types/node": "8",
     "@types/uglifyjs-webpack-plugin": "^1.1.0",
     "@types/webpack": "^4.1.6",
@@ -98,8 +101,11 @@
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.46",
     "@babel/runtime": "^7.0.0-beta.46",
-    "@hollowverse/utils": "^6.0.0",
-    "aws-sdk": "^2.238.1"
+    "@hollowverse/utils": "^7.0.1",
+    "aws-sdk": "^2.238.1",
+    "bluebird": "^3.5.1",
+    "got": "^8.3.1",
+    "p-memoize": "^1.0.0"
   },
   "resolutions": {
     "babel-core": "^7.0.0-bridge.0"

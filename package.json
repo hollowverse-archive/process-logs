@@ -59,7 +59,8 @@
     "validate-filenames": "validate-filenames",
     "check-ts": "tsc --project . --noEmit",
     "lint-ts": "tslint 'src/**/*.ts' --project .",
-    "clown": "clown"
+    "clown": "clown",
+    "deploy": "babel-node deploy.js"
   },
   "lint-staged": {
     "**/*.md": [

@@ -18,6 +18,19 @@ provider:
   environment:
     NODE_ENV: ${env:NODE_ENV, 'development'}
     STAGE: ${self:provider.stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - secretsmanager:GetSecretValue
+      Resource:
+        - "${self:custom.secretsArnPrefix}/splunk/httpCollector/awsLogs/token-*"
+      Resource: "*"
+    - Effect: Allow
+      Action:
+        - cloudwatch:*
+        - logs:*
+        - events:*
+      Resource: "*"
 
 functions:
   processLogs:

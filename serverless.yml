@@ -26,12 +26,6 @@ provider:
         - secretsmanager:GetSecretValue
       Resource:
         - "${self:custom.secretsArnPrefix}/splunk/httpCollector/awsLogs/token-*"
-    - Effect: Allow
-      Action:
-        - cloudwatch:*
-        - logs:*
-        - events:*
-      Resource: "*"
 
 functions:
   processLogs:

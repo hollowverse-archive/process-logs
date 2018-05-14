@@ -32,4 +32,6 @@ functions:
     handler: src/processLogs.processLogs
     events:
       - cloudwatchLog: '/aws/lambda/website-master-servePages'
+      - cloudwatchLog: '/aws/lambda/website-beta-servePages'
+      - cloudwatchLog: '/aws/lambda/api-production-serveApi'
 

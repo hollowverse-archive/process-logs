@@ -25,7 +25,7 @@ declare module 'p-memoize' {
      *
      * @default new Map()
      */
-    cahce?: Map | WeakMap;
+    cache?: Map | WeakMap;
 
     /** Cache rejected promises. */
     cachePromiseRejection?: boolean;

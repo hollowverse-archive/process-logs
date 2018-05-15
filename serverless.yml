@@ -16,7 +16,7 @@ provider:
   runtime: nodejs8.10
   stage: ${opt:stage, 'local'}
   memorySize: 128
-  timeout: 300
+  timeout: 10
   environment:
     NODE_ENV: ${env:NODE_ENV, 'development'}
     STAGE: ${self:provider.stage}

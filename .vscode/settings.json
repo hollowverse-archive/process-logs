@@ -1,10 +1,12 @@
 {
   "cSpell.words": [
+    "Splunk",
+    "awslogs",
     "hollowverse",
     "loglevel",
     "promisify",
-    "webpagetest",
-    "unhandledrejection"
+    "unhandledrejection",
+    "webpagetest"
   ],
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
@@ -14,7 +16,9 @@
   "files.associations": {
     "**/.babelrc": "jsonc",
     "**/.babelrc.json": "jsonc",
-    "**/tsconfig.json": "jsonc"
+    "**/tsconfig.json": "jsonc",
+    "**/tslint.json": "jsonc",
+    "**/.eslintrc.json": "jsonc"
   },
   "typescript.implementationsCodeLens.enabled": true,
   "typescript.referencesCodeLens.enabled": true,
@@ -25,8 +29,6 @@
   "eslint.options": {
     "reportUnusedDisableDirectives": true
   },
-  "eslint.validate": [
-    "typescript",
-    "typescriptreact"
-  ]
+  "eslint.validate": ["typescript", "typescriptreact"],
+  "eslint.enable": true
 }

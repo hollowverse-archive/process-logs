@@ -1,0 +1,40 @@
+service: process-logs
+
+plugins:
+  - serverless-webpack
+
+custom:
+  regionAndAccount: us-east-1:251013100663
+  secretsArnPrefix: arn:aws:secretsmanager:${self:custom.regionAndAccount}:secret:${self:provider.stage}
+  webpack:
+    webpackConfig: webpack.config.ts
+    packager: yarn
+    includeModules: true # Enable auto-packing of external modules
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage, 'local'}
+  memorySize: 128
+  timeout: 10
+  environment:
+    NODE_ENV: ${env:NODE_ENV, 'development'}
+    STAGE: ${self:provider.stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - secretsmanager:GetSecretValue
+      Resource:
+        - "${self:custom.secretsArnPrefix}/splunk/httpCollector/awsLogs/token-*"
+
+functions:
+  processLogs:
+    handler: src/processLogs.processLogs
+    events:
+      - cloudwatchLog: '/aws/lambda/website-master-servePages'
+      - cloudwatchLog: '/aws/lambda/website-beta-servePages'
+      - cloudwatchLog: '/aws/lambda/website-master-serveLogEndpoint'
+      - cloudwatchLog: '/aws/lambda/website-beta-serveLogEndpoint'
+      - cloudwatchLog: '/aws/lambda/api-production-serveApi'
+      - clouwwatchLog: '/aws/lambda/process-image-production-processImage'
+
